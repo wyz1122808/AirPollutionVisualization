@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visual Tech Project 2</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/hkj4cvs.css">
+    <script src="p5.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/css/foundation.min.css" integrity="sha256-1mcRjtAxlSjp6XJBgrBeeCORfBp/ppyX4tsvpQVCcpA= sha384-b5S5X654rX3Wo6z5/hnQ4GBmKuIJKMPwrJXn52ypjztlnDK2w9+9hSMBz/asy9Gw sha512-M1VveR2JGzpgWHb0elGqPTltHK3xbvu3Brgjfg4cg5ZNtyyApxw/45yHYsZ/rCVbfoO5MSZxB241wWq642jLtA==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin="">
+
+    var map;
+    </script>
+    
+
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.min.js"></script>
+
+    
+
+      <div class="topt">
+        <div class="t">
+          Trip Airvisor
+        </div>
+        
+      </div>
+  
+
+    
+</head>
+
+
+
+
+<body>
+    
+  
+
+  <div class="intro">
+    <div class="introl">
+      <div class="ltitle">
+        Planning your trip
+      </div>
+
+      <div class="lctx">
+        We often hear about large cities having the worst air pollution records as a result of vehicle emissions; Hong Kong, Delhi, Manila, Cairo, Mexico City, and Santiago come to mind. No matter your destination, you will not be able to fully escape air pollution. However, this site will help you compare the air quality of you destination city with the current you are living in.
+      </div>
+
+    </div>
+
+    <div class="intror">
+
+      <div class="rtitle">
+        What is air pollution?
+      </div>
+
+      <div class="rctx">
+        Air pollution is a toxic soup of chemicals, particulate matter, and biological materials that react with each other and can reach harmful concentrations both indoors and outdoors. Air pollution is a major public health issue that contributes to chronic diseases, increased hospitalization, and premature mortality. In fact, the World Health Organization estimates that outdoor air pollution causes 3.7 million premature deaths worldwide every year.
+      </div>
+
+    </div>
+
+
+  </div>
+  
+
+  <div class="mapframe">
+
+    <div id="map"> 
+      1
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropbtn">Need Help?</button>
+    <div class="dropdown-content1">
+      Click on anywhere on the map located on left-hand side will set your current city and destination city. Once you've assigned both cities, the upcoming clicks will re-assign the previous ones. (e.g. The third click on map will re-assign your current city and the firth will re-assign your destination.)
+    </div>
+  </div>
+
+
+  <div class="dd">
+
+    <button class="dropbtn">Polluting gases</button>
+    <div class="dropdown-content">
+      
+      <p>
+        CO is a colorless, odorless gas that can be harmful when inhaled in large amounts. CO is released when something is burned. The greatest sources of CO to outdoor air are cars, trucks and other vehicles or machinery that burn fossil fuels.
+      </p>
+      <p>
+        PM2.5 are able to travel deeply into the respiratory tract, reaching the lungs. Exposure to fine particles can cause short-term health effects such as eye, nose, throat and lung irritation, coughing, sneezing, runny nose and shortness of breath.
+      </p>
+      <p>
+        NO2 and other NOx interact with water, oxygen and other chemicals in the atmosphere to form acid rain. Acid rain harms sensitive ecosystems such as lakes and forests.
+      </p>
+
+      <p>
+        SO2 can harm the human respiratory system and make breathing difficult. People with asthma, particularly children, are sensitive to these effects of SO2. It can also react with other compounds in the atmosphere to form particulate matter (PM).
+      </p>
+
+      <p>
+        PM10 are like PM2.5, but PM10 also includes dust from construction sites, landfills and agriculture, wildfires and brush/waste burning, industrial sources, wind-blown dust from open lands, pollen and fragments of bacteria.
+      </p>
+      <p>
+        AQI is used to communicate how polluted the air is. 5 means the air is highly polluted. Computation of the AQI requires an air pollutant concentration over a specified averaging period, obtained from an air monitor or model.
+      </p>
+    </div>
+  </div>
+
+
+  
+
+
+
+<div id="rollText">
+
+</div>
+
+  <div class="main">
+    <script src="js/cityClass.js"></script>
+    <script src="js/help.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+
+      
+      map = L.map('map').setView([49.24, -123.1197], 5);
+  
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  
+  
+    map.on('click', function(e) {
+  
+        
+        roll(e.latlng.wrap().lat, e.latlng.wrap().lng);
+        
+        
+    });
+  
+  
+  
+  
+    </script>
+
+  </div>
+  <div id = square>
+    
+  </div>
+  
+<!--   
+  <div class="ftitle">
+    Current city data: 
+  </div>
+  <div id="first">
+    <div id="f1"></div>
+    <div id="f2"></div>
+    <div id="f3"></div>
+    <div id="f4"></div>
+    <div id="f5"></div>
+      
+
+  </div>
+
+
+  <div class="stitle">
+    Destination city data:
+
+  </div>
+  <div id="second">
+    <div id="s1"></div>
+    <div id="s2"></div>
+    <div id="s3"></div>
+    <div id="s4"></div>
+    <div id="s5"></div>
+  </div> -->
+
+
+
+
+</body>
+
+<footer>
+
+  <p>
+    https://openweathermap.org/api/air-pollution
+  </p>
+  <p>
+    https://en.wikipedia.org/wiki/Air_quality_index#CAQI
+  </p>
+  <p>
+    https://leafletjs.com/
+  </p>
+  <p>
+    
+  </p>
+</footer>
+
+</html>
